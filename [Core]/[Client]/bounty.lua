@@ -37,14 +37,14 @@ local TotalEnemies = 0
 local SearchingBodies = false
 local GPSToBodyIsSet = false
 local SaveGuard = false
-local terminou = false -- fix spam
+local finish = false -- fix spam
 
 
 AddEventHandler('DevDokus:BountyHunter:C:SetUpMission', function(_Job)
   -- Make sure this script does not execute twice.
-if terminou == false then    
+if finish == false then    
   SaveGuard = true
-  terminou = true    
+  finish = true    
   
   -- See if any job is required.
   local HasJob = false
@@ -162,11 +162,11 @@ if terminou == false then
     SetGpsMultiRouteRender(false)
     for k, v in pairs(CreateNPC) do DeletePed(v) Wait(500) end
     table.remove{CreateNPC} table.remove{ArrayBounties}
-    terminou = false
+    finish = false
   end
 
 
   AddEventHandler('DevDokus:BountyHunter:C:ResetTotalKills', function()
     TotalKilled = 0
-    terminou = false
+    finish = false
   end)
